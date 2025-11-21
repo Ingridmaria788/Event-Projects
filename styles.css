@@ -171,6 +171,74 @@ section p {
     color: var(--secondary-color); /* Cor do texto */
 }
 
+button.like, button.add {
+  background: transparent;
+  border: none;
+  padding: 0.3rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--primary-color); /* cor padrão do ícone */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button .icon {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;  /* faz o ícone usar a cor do botão */
+  display: block;
+}
+
+/* estados */
+button.like:hover { color: #b04040; }
+button.add:hover { color: var(--secondary-color); }
+
+/* estado toggled (curtido) */
+button .like .liked { color: #e74c3c; }
+
+/* foco visível (acessibilidade) */
+button:focus {
+  outline: 2px solid rgba(0,0,0,0.12);
+  outline-offset: 3px;
+}
+
+.card-controls {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+button.like, button.add {
+    background: transparent;
+    border: none;
+    padding: 0.4rem;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--tertiary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button .icon {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+    display: block;
+}
+
+button.like.liked {
+    color: #e74c3c; /* cor coração curtido */
+}
+
+button:focus {
+    outline: 2px solid rgba(0,0,0,0.12);
+    outline-offset: 2px;
+}
+
 article a {
     color: var(--primary-color); /* Cor do link */
     text-decoration: none; /* Remove o sublinhado padrão */
