@@ -8,6 +8,7 @@
     --primary-color: #5dad6a; /* Cor primária (azul claro) */
     --secondary-color: #41744f; /* Cor secundária (cinza claro) */
     --tertiary-color: #0a3511; /* Cor terciária (cinza médio) */
+    --accent-color: #41744f; /* Cor de destaque (fallback) */
     --bg-color: #d3d0b2; /* Cor de fundo (cinza escuro) */
 }
 
@@ -44,8 +45,8 @@ nav {
     align-items: center; /* Alinha os itens ao centro verticalmente */
     width: 100%; 
     justify-content: center; /* Centraliza os itens horizontalmente */
-    margin: 0%; 
-    padding: 0%;
+    margin: 0; 
+    padding: 0;
     background-color: var(--primary-color);
     position: sticky;  /* Mantém o cabeçalho fixo no topo ao rolar a página */
     top: 0;
@@ -76,11 +77,11 @@ input {
     border: 1px solid var(--bg-color); /* Define a borda */
     background: var(--secondary-color); /* Cor de fundo */
     font-family: inherit; /* Herda a família da fonte do elemento pai */
-    font-size: 1.5rem; /* Tamanho da fonte */
-    transition: all 0.2s ease; /* Adiciona uma transição suave para todas as propriedades */
-    width: 30rem; /* Largura do input */
+    font-size: 1.2rem; /* Tamanho da fonte (um pouco menor para melhor encaixe) */
+    transition: border-color 0.18s ease, box-shadow 0.18s ease; /* transição apenas para propriedades visuais relevantes */
+    width: clamp(12rem, 35vw, 30rem); /* largura responsiva, mínima 12rem, máxima 30rem */
     color: var(--bg-color); /* Cor do texto digitado */
-    margin-left: 280px;
+    margin-left: 0; /* remover margem fixa para layout flexível */
 }
 
 input::placeholder {
@@ -97,7 +98,7 @@ input:focus {
 
 #botao-busca {
     padding: 0.7rem 0.8rem; /* Espaçamento interno */
-    margin: 15px;
+    margin: 0.4rem 0.4rem 0.4rem 0; /* espaçamento consistente sem deslocamento grande */
     border-radius: 1rem; /* Arredonda as bordas */
     border: none; /* Remove a borda padrão */
     cursor: pointer; /* Muda o cursor para uma mão ao passar por cima */
@@ -129,14 +130,6 @@ main {
     flex: 1; /* Faz o main crescer para preencher o espaço entre header e footer */
 }
 
-p {
-    margin: 0.5rem 0; /* Margem superior e inferior */
-    line-height: 1.6; /* Altura da linha para melhor legibilidade */
-    font-size: 1.5rem; /* Tamanho da fonte */
-    margin-bottom: 0.5rem; /* Margem inferior */
-    color: var(--secondary-color); /* Cor do texto */
-}
-
 article {
     background: none; /* Sem cor de fundo */
     border-radius: 0; /* Sem bordas arredondadas */
@@ -159,17 +152,23 @@ article h2 {
     color: var(--primary-color); /* Cor do texto */
 }
 
+img {
+    display: block;
+    margin: 1rem;
+}
+
 article p {
     margin: 0.5rem 0; /* Margem superior e inferior */
     line-height: 1.6; /* Altura da linha para melhor legibilidade */
-    font-size: 1rem; /* Tamanho da fonte */
-    margin-bottom: 0.5rem; /* Margem inferior */
+    font-size: 1.5rem; /* Tamanho da fonte padronizado */
     color: var(--secondary-color); /* Cor do texto */
 }
 
-article p strong {
-    color: var(--tertiary-color); /* Cor do texto em negrito */
-    font-weight: 400; /* Peso da fonte */
+section p {
+    margin: 0.5rem 0; /* Margem superior e inferior */
+    line-height: 1.6; /* Altura da linha para melhor legibilidade */
+    font-size: 1.5rem; /* Tamanho da fonte padronizado */
+    color: var(--secondary-color); /* Cor do texto */
 }
 
 article a {
@@ -182,23 +181,12 @@ article a:hover {
     text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
 }
 
-.lista{
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-}
-
-.card{
-    size: fit-content;
-    margin: 0%;
-    background: var(--bg-color);
-    border: 1px solid var(--secondary-color);
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    box-sizing: border-box;
-}
+img {
+    max-width: 100%; /* Garante que a imagem não exceda a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 0.5rem; /* Arredonda levemente as bordas da imagem */
+    margin-top: 1rem; /* Adiciona margem superior */
+}   
 
 footer {
     width: 100%; /* Largura total */
@@ -234,7 +222,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: var(--accent-color); /* Muda a cor do link ao passar o mouse (variável não definida) */
+    color: var(--primary-color); /* Muda a cor do link ao passar o mouse (variável não definida) */
 }
 
 @media (max-width: 768px) {
@@ -286,7 +274,7 @@ footer {
         gap: 0.5rem; /* Espaçamento entre os itens */
     }
 
-    .footer { /* Estilos para o rodapé em telas muito pequenas */
+    footer { /* Estilos para o rodapé em telas muito pequenas */
         display: none; /* Oculta o rodapé */
     }
 
